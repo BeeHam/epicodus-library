@@ -9,8 +9,8 @@ class Reader
     readers = []
 
     returned_readers.each() do |reader|
-      @name = reader.fetch('name')
-      @id = reader.fetch('id').to_i()
+      name = reader.fetch('name')
+      id = reader.fetch('id').to_i()
       readers.push(Reader.new({:id => id, :name => name}))
     end
     readers
@@ -30,5 +30,15 @@ class Reader
 
   define_singleton_method(:clear) do
     DB.exec("DELETE FROM readers *;")
+  end
+
+  define_singleton_method(:find) do |ident|
+    found_reader = nil
+    Reader.all().each() do |reader|
+      if reader.id().==(ident)
+        found_reader = reader
+      end
+    end
+    found_reader
   end
 end

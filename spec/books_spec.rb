@@ -30,4 +30,18 @@ describe(Book) do
       expect(Book.all()).to(eq([]))
     end
   end
+  describe('#id') do
+    it('lets you read the book id out') do
+      test_book = Book.new({:id => nil, :title => "Cat in the Hat", :author => "Dr. Seuss", :pub_date => "1942-01-01", :book_id => 1})
+      test_book.save()
+      expect(test_book.id()).to be_an_instance_of Fixnum
+    end
+  end
+
+  describe('#book_id') do
+    it('will read the book id out') do
+      test_book =Book.new({:id => nil, :title => "Cat in the Hat", :author => "Dr. Seuss", :pub_date => "1942-01-01", :book_id => 1})
+      expect(test_book.book_id()).to(eq(1))
+    end
+  end
 end

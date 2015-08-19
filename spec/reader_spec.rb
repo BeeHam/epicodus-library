@@ -36,6 +36,23 @@ describe('Reader') do
     expect(test_reader.id).to be_an_instance_of Fixnum
     end
   end
+
+  describe('.find') do
+    it('finds the reader by id') do
+      test_reader = Reader.new({:name => "Not Sure", :id => nil})
+      test_reader.save()
+      test_reader2 = Reader.new({:name => "Formica Jones", :id => nil})
+      test_reader2.save()
+      expect(Reader.find(test_reader.id())).to(eq(test_reader))
+    end
+  end
+  describe('#name') do
+  it('returns the name of the reader') do
+    test_reader = Reader.new({:name => 'Frito Bandito', :id => nil})
+    test_reader.save()
+    expect(test_reader.name()).to eq 'Frito Bandito'
+  end
+  end
 end
-#still need a #id, #books, #add_books, and .find spec in readers.rb
-#still need a #book_id and #id spec in books.rb
+
+#still need a #name(?) #books, #add_books, and .find spec in readers.rb
