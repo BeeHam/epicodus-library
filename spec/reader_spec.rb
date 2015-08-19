@@ -29,4 +29,13 @@ describe('Reader') do
       expect(Reader.all()).to(eq([]))
     end
   end
+  describe('#id') do
+    it('returns the id of the reader') do
+    test_reader = Reader.new({:id => nil, :name => 'Phoebe Boffet'})
+    test_reader.save()
+    expect(test_reader.id).to be_an_instance_of Fixnum
+    end
+  end
 end
+#still need a #id, #books, #add_books, and .find spec in readers.rb
+#still need a #book_id and #id spec in books.rb
