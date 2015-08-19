@@ -27,3 +27,13 @@ post('/readers') do
   @readers = Reader.all()
   erb(:reader_list)
 end
+
+# get('/readers/:id') do
+#   @books = Book.find(params.fetch('id').to_i())
+#   erb(:book_list)
+# end
+
+get('/readers/:id') do
+  @reader = Reader.find(params.fetch('id').to_i())
+  erb(:book_list)
+end

@@ -1,0 +1,24 @@
+<h1>Your Current Readers</h1>
+
+<% if @readers.any?() %>
+  <h3>Here are your lists:</h3>
+
+  <ul>
+    <% @readers.each() do |reader| %>
+      <li><a href="/readers/<%= reader.id()%>"><%= reader.name() %></a></li>
+    <% end %>
+  </ul>
+
+<% else %>
+
+  <p>There are no readers yet!</p>
+
+<% end %>
+
+<form action="/reader_list" method="post">
+  <div class="form-group">
+    <label class="form-label" for="name">Assign a name to your list:</label>
+    <input class="form-control" id="name" name="name" type="text" placeholder="List Name" autofocus>
+    <button type="submit" class="button btn">Add Reader</button>
+  </div>
+</form>

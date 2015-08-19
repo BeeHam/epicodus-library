@@ -1,0 +1,36 @@
+<h1>List page for task</h1>
+# make books method before this functions
+<% if @reader.books().any?()%>
+
+  <% @reader.each do |book| %>
+  <ul>
+    <li> <%= book.title() %> </li>
+  </ul>
+  <% end %>
+
+
+<% else %>
+
+  <p>There are no books on this list!</p>
+
+<% end %>
+
+<form action="/readers/:id" method="post">
+  <input id="book_id" name="book_id" type="hidden" value="<%= @book.id() %>">
+  <label for="title">Title:</label>
+  <input id="title" name="title" type="text" placeholder="Title">
+
+  <input id="book_id" name="book_id" type="hidden" value="<%= @book.id() %>">
+  <label for="pub_date">Publication Date:</label>
+  <input id="pub_date" name="pub_date" type="text" placeholder="Publication Date">
+
+  <input id="book_id" name="book_id" type="hidden" value="<%= @book.id() %>">
+  <label for="author">Author:</label>
+  <input id="author" name="author" type="text" placeholder="Author">
+
+  <button type="submit">Add it!!</button>
+</form>
+
+<div class="container">
+  <a href="/"><button class="btn">Home</a>
+</div>
