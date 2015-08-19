@@ -32,4 +32,8 @@ class Book
   define_method(:==) do |another_book|
     self.title.==(another_book.title).&(self.book_id.==(another_book.book_id)).&(self.id.==(another_book.id)).&(self.pub_date.==(another_book.pub_date)).&(self.author.==(another_book.author))
   end
+
+  define_singleton_method(:clear) do
+    DB.exec("DELETE FROM books *;")
+  end
 end
