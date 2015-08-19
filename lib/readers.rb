@@ -27,4 +27,8 @@ class Reader
     result = DB.exec("INSERT INTO readers (name) VALUES ('#{@name}') RETURNING id;")
     @id = result.first().fetch('id').to_i()
   end
+
+  define_singleton_method(:clear) do
+    DB.exec("DELETE FROM readers *;")
+  end
 end

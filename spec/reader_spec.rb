@@ -21,4 +21,12 @@ describe('Reader') do
       expect(test_reader1).to eq test_reader1
     end
   end
+
+  describe('.clear') do
+    it('empties out all of the saved readers') do
+      Reader.new({:id => nil, :name => "Ross Geller"})
+      Reader.clear()
+      expect(Reader.all()).to(eq([]))
+    end
+  end
 end
