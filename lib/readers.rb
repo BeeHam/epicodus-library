@@ -15,4 +15,8 @@ class Reader
     end
     readers
   end
+
+  define_method(:==) do |another_reader|
+    self.name().==(another_reader.name()).&(self.id().==(another_reader.id()))
+  end
 end

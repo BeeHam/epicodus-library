@@ -16,7 +16,7 @@ describe(Book) do
   end
 
   describe('#==') do
-    it('is the same task if it is the same description') do
+    it('is the same book if it is the same name') do
       test_book1 = Book.new({:id => nil, :title => "Cat in the Hat", :author => "Dr. Seuss", :pub_date => "1942-01-01", :book_id => 1})
       test_book2 = Book.new({:id => nil, :title => "Cat in the Hat", :author => "Dr. Seuss", :pub_date => "1942-01-01", :book_id => 1})
       expect(test_book1).to eq test_book2
