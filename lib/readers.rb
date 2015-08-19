@@ -19,4 +19,12 @@ class Reader
   define_method(:==) do |another_reader|
     self.name().==(another_reader.name()).&(self.id().==(another_reader.id()))
   end
+  define_method(:save) do
+    if ! @id
+      @id = "NULL"
+    end
+
+    result = DB.exec("INSERT INTO readers (name) VALUES ('#{@name}') RETURNING id;")
+    @id = result.first().fetch('id').to_i()
+  end
 end

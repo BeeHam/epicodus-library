@@ -14,4 +14,11 @@ describe('Reader') do
       expect(test_reader1).to eq test_reader2
     end
   end
+  describe('#save') do
+    it('saves a reader') do
+      test_reader1 = Reader.new({:id => nil, :name => "Chandler Bing"})
+      test_reader1.save()
+      expect(test_reader1).to eq test_reader1
+    end
+  end
 end
