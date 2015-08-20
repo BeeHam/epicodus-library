@@ -47,11 +47,18 @@ describe('Reader') do
     end
   end
   describe('#name') do
-  it('returns the name of the reader') do
-    test_reader = Reader.new({:name => 'Frito Bandito', :id => nil})
-    test_reader.save()
-    expect(test_reader.name()).to eq 'Frito Bandito'
+    it('returns the name of the reader') do
+      test_reader = Reader.new({:name => 'Frito Bandito', :id => nil})
+      test_reader.save()
+      expect(test_reader.name()).to eq 'Frito Bandito'
+    end
   end
+  describe('#books') do
+    it('returns all the books the reader has') do
+    test_reader = Reader.new({ :name => 'bill', :id => nil })
+    test_reader.save()
+    expect(test_reader.books()).to eq []
+     end
   end
 end
 
