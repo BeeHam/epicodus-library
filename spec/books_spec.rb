@@ -44,4 +44,13 @@ describe(Book) do
       expect(test_book.book_id()).to(eq(1))
     end
   end
+
+  describe('#update') do
+    it('lets you update books in the database') do
+      book = Book.new({:id => nil, :title => "Cat in the Hat", :author => "Dr. Seuss", :pub_date => "1942-01-01", :book_id => 1})
+      book.save()
+      book.update({:title => "Cat in Da Hat", :author => "Dr. Seuss", :pub_date => "1942-01-01", :book_id => 1})
+      expect(book.title()).to(eq("Cat in Da Hat"))
+    end
+  end
 end

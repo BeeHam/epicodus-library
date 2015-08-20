@@ -36,4 +36,13 @@ class Book
   define_singleton_method(:clear) do
     DB.exec("DELETE FROM books *;")
   end
+
+  define_method(:update) do |attributes|
+    @id = self.id()
+    # @book_id = attributes.fetch(:book_id).to_i()
+    @title = attributes.fetch(:title)
+    @author = attributes.fetch(:author)
+    @pub_date = attributes.fetch(:pub_date)
+    DB.exec("UPDATE books SET title = '#{@title}', author = '#{@author}', pub_date = '#{@pub_date}' WHERE id = #{@id};")
+  end
 end
