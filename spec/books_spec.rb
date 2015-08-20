@@ -72,4 +72,12 @@ describe(Book) do
       expect(Book.find(test_book.id())).to(eq(test_book))
     end
   end
+
+  describe('#readers') do
+    it('returns all the readers the book has') do
+      test_book = Book.new({:id => nil, :title => "A Feast for Crows", :author => "George R.R. Martin", :pub_date => '2006-01-31'})
+      test_book.save()
+      expect(test_book.readers()).to(eq([]))
+    end
+  end
 end

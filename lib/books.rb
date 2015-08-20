@@ -60,4 +60,16 @@ class Book
     end
     found_book
   end
+
+  define_method(:readers) do
+    book_readers = []
+    results = DB.exec("SELECT reader_id FROM readers_books WHERE book_id = #{self.id()};")
+    results.each() do |result|
+      reader_id = result.fetch("reader_id").to_i()
+      reader = DB.exec("SELECT * FROM readers WHERE id = #{reader_id};")
+      name = reader.first().fetch("name")
+      book_readers.push(Reader.new(:name => name, :id => reader_id))
+    end
+    book_readers
+  end
 end
