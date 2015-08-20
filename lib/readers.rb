@@ -62,4 +62,9 @@ class Reader
     @id = self.id()
     DB.exec("UPDATE readers SET name = '#{@name}' WHERE id = #{@id};")
   end
+
+  define_method(:delete) do
+    DB.exec("DELETE FROM readers WHERE id = #{self.id};")
+
+  end
 end

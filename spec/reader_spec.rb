@@ -69,6 +69,16 @@ describe('Reader') do
       expect(reader.name()).to(eq("Seven Layer"))
     end
   end
+  describe('#delete') do
+    it('deletes a reader from the database') do
+      test_reader1 = Reader.new({:name => 'Beef Supreme', :id => nil})
+      test_reader1.save()
+      test_reader2 = Reader.new({:name => 'Dr. Lexus', :id => nil})
+      test_reader2.save()
+      test_reader1.delete()
+      expect(Reader.all). to eq [test_reader2]
+    end
+  end
 end
 
 
