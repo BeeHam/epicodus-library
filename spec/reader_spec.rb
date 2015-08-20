@@ -60,6 +60,20 @@ describe('Reader') do
     expect(test_reader.books()).to eq []
      end
   end
+
+  describe('#update') do
+    it('lets you update readers in the database') do
+      reader = Reader.new({:name => 'Beef Supreme', :id => nil})
+      reader.save()
+      reader.update({:name => "Seven Layer"})
+      expect(reader.name()).to(eq("Seven Layer"))
+    end
+  end
 end
 
-#still need a #name(?) #books, #add_books, and .find spec in readers.rb
+
+
+
+
+
+#still need a #name(?), #add_books, and .find spec in readers.rb
