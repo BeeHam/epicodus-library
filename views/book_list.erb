@@ -1,8 +1,8 @@
 <h1>Book list for <%= @reader.name() %></h1>
-<!-- # make books method before this functions -->
+
 <% if @reader.books().any?()%>
 
-  <% @reader.books().each do |book| %>
+  <% @reader.books().each() do |book| %>
   <ul>
     <li> <%= book.title() %> </li>
   </ul>

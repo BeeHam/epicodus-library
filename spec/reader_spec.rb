@@ -65,8 +65,16 @@ describe('Reader') do
     it('lets you update readers in the database') do
       reader = Reader.new({:name => 'Beef Supreme', :id => nil})
       reader.save()
-      reader.update({:name => "Seven Layer"})
-      expect(reader.name()).to(eq("Seven Layer"))
+      book1 = Book.new({:id => nil, :title => "Cat in the Hat", :author => "Dr. Seuss", :pub_date => "1942-01-01"})
+      book1.save()
+      book2 = Book.new({:id => nil, :title => "A Dance of Dragons", :author => "George R.R. Martin", :pub_date => '2007-01-31'})
+      book2.save()
+      reader.update({:book_id => [book1.id, book2.id], :name => 'Beef Supreme'})
+      # binding.pry
+      expect(reader.books()).to(eq([book1, book2]))
+
+      # reader.update({:name => "Seven Layer"})
+      # expect(reader.name()).to(eq("Seven Layer"))
     end
   end
   describe('#delete') do

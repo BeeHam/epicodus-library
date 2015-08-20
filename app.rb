@@ -40,10 +40,9 @@ post('/readers/:id/books') do
   title = params.fetch('title')
   pub_date = params.fetch('pub_date')
   author = params.fetch('author')
-  # book_id = params.fetch("book_id").to_i()
   book = Book.new(:id => nil, :title => title, :pub_date => pub_date, :author => author)
   book.save()
-  @books = Book.all()
+  # @books = Reader.find(params.fetch('id'))
   erb(:book_list)
 end
 

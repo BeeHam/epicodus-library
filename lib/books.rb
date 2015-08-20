@@ -4,7 +4,6 @@ class Book
     @title = attributes.fetch(:title)
     @pub_date = attributes.fetch(:pub_date)
     @author = attributes.fetch(:author)
-    # @book_id = attributes[:book_id]
     @id = attributes[:id]
   end
 
@@ -13,7 +12,6 @@ class Book
     books = []
     returned_books.each() do |book|
       id = book.fetch('id').to_i()
-      # book_id = book.fetch('book_id').to_i()
       title = book.fetch('title')
       author = book.fetch('author')
       pub_date = book.fetch('pub_date')
@@ -38,11 +36,15 @@ class Book
   end
 
   define_method(:update) do |attributes|
-    @id = self.id()
-    @title = attributes.fetch(:title)
-    @author = attributes.fetch(:author)
-    @pub_date = attributes.fetch(:pub_date)
+    @title = attributes.fetch(:title, @title)
+    @author = attributes.fetch(:author, @author)
+    @pub_date = attributes.fetch(:pub_date, @pub_date)
+
     DB.exec("UPDATE books SET title = '#{@title}', author = '#{@author}', pub_date = '#{@pub_date}' WHERE id = #{@id};")
+
+    attributes.fetch(:reader_id, []).each() do |read_id|
+      DB.exec("INSERT INTO readers_books (reader_id, book_id) VALUES (#{read_id}, #{self.id});")
+    end
   end
 
   define_method(:delete) do

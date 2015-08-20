@@ -11,5 +11,6 @@ RSpec.configure do |config|
   config.after(:each) do
     DB.exec("DELETE FROM books *;")
     DB.exec("DELETE FROM readers *;")
+    DB.exec("DELETE FROM readers_books *;")
   end
 end

@@ -3,6 +3,7 @@ require('spec_helper')
 describe(Book) do
   describe('.all') do
     it('shows an empty array of books') do
+    # Book.clear()
     expect(Book.all).to eq []
     end
   end
@@ -38,19 +39,16 @@ describe(Book) do
     end
   end
 
-  # describe('#book_id') do
-  #   it('will read the book id out') do
-  #     test_book =Book.new({:id => nil, :title => "Cat in the Hat", :author => "Dr. Seuss", :pub_date => "1942-01-01", :book_id => 1})
-  #     expect(test_book.book_id()).to(eq(1))
-  #   end
-  # end
-
   describe('#update') do
     it('lets you update books in the database') do
       book = Book.new({:id => nil, :title => "Cat in the Hat", :author => "Dr. Seuss", :pub_date => "1942-01-01"})
       book.save()
-      book.update({:title => "Cat in Da Hat", :author => "Dr. Seuss", :pub_date => "1942-01-01"})
-      expect(book.title()).to(eq("Cat in Da Hat"))
+      reader1 = Reader.new({:name => 'Not Sure', :id => nil})
+      reader1.save()
+      reader2 = Reader.new({:name => 'Dr. Lexus', :id => nil})
+      reader2.save()
+      book.update({:reader_id => [reader1.id, reader2.id]})
+      expect(book.readers()).to(eq([reader1, reader2]))
     end
   end
 
