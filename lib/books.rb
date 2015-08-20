@@ -48,4 +48,14 @@ class Book
   define_method(:delete) do
     DB.exec("DELETE FROM books WHERE id = #{self.id};")
   end
+
+  define_singleton_method(:find) do |ident|
+    found_book = nil
+    Book.all().each() do |book|
+      if book.id().==(ident)
+        found_book = book
+      end
+    end
+    found_book
+  end
 end

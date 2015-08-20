@@ -64,4 +64,14 @@ describe(Book) do
       expect(Book.all).to eq [test_book1]
     end
   end
+
+  describe('.find') do
+    it('finds the reader by id') do
+      test_book = Book.new({:id => nil, :title => "A Dance of Dragons", :author => "George R.R. Martin", :pub_date => '2007-01-31', :book_id => 1})
+      test_book.save()
+      test_book2 = Book.new({:id => nil, :title => "A Feast for Crows", :author => "George R.R. Martin", :pub_date => '2006-01-31', :book_id => 1})
+      test_book2.save()
+      expect(Book.find(test_book.id())).to(eq(test_book))
+    end
+  end
 end
