@@ -16,15 +16,13 @@
 <% end %>
 
 <form action="/readers/:id" method="post">
-  <input id="book_id" name="book_id" type="hidden" value="<%= @book.id() %>">
+  <input id="book_id" name="book_id" type="hidden" value="<%= @book %>">
   <label for="title">Title:</label>
   <input id="title" name="title" type="text" placeholder="Title">
 
-  <input id="book_id" name="book_id" type="hidden" value="<%= @book.id() %>">
   <label for="pub_date">Publication Date:</label>
   <input id="pub_date" name="pub_date" type="text" placeholder="Publication Date">
 
-  <input id="book_id" name="book_id" type="hidden" value="<%= @book.id() %>">
   <label for="author">Author:</label>
   <input id="author" name="author" type="text" placeholder="Author">
 
