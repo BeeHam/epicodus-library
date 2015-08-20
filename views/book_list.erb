@@ -1,8 +1,8 @@
-<h1>List page for task</h1>
+<h1>Book list for <%= @reader.name() %></h1>
 <!-- # make books method before this functions -->
 <% if @reader.books().any?()%>
 
-  <% @reader.each do |book| %>
+  <% @reader.books().each do |book| %>
   <ul>
     <li> <%= book.title() %> </li>
   </ul>
@@ -15,8 +15,8 @@
 
 <% end %>
 
-<form action="/readers/:id" method="post">
-  <input id="book_id" name="book_id" type="hidden" value="<%= @book %>">
+<form action="/readers/:id/books" method="post">
+  <input id="reader_id" name="reader_id" type="hidden" value="<%= @reader.id() %>">
   <label for="title">Title:</label>
   <input id="title" name="title" type="text" placeholder="Title">
 

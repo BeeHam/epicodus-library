@@ -42,17 +42,17 @@ class Reader
     found_reader
   end
   define_method(:books) do
-    returned_books = DB.exec("SELECT * FROM books WHERE book_id = #{@id};")
+    returned_books = DB.exec("SELECT * FROM books WHERE id = #{@id};")
     books = []
 
     returned_books.each() do |book|
       title =     book.fetch('title')
       pub_date =  book.fetch('pub_date')
       author =    book.fetch('author')
-      book_id =   book.fetch('book_id').to_i()
+      # book_id =   book.fetch('book_id').to_i()
       id =        book.fetch('id').to_i()
 
-      books.push(Book.new({:id => id, :book_id => book_id, :author => author, :pub_date => pub_date, :title => title }))
+      books.push(Book.new({:id => id, :author => author, :pub_date => pub_date, :title => title }))
     end
     books
   end
